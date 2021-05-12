@@ -4,7 +4,7 @@
 
 - hparms.py 내 textgrid_path 변수 추가
 - preprocess.py 내 Textgrid.zip의 위치를 옮기는 코드 삭제
-- preppoecess.py 내 "wavs"와 "wav_bak" 생성시, 발생하는  exist error 수정 (shutill.rmtree)  
+- preprocess.py 내 "wavs"와 "wav_bak" 생성시, 발생하는  exist error 수정 (shutill.rmtree)  
 - 그 외 각종 버그 수정
 
 
