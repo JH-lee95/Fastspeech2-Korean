@@ -77,7 +77,7 @@ processing_utils.ipynb 노트북 내의 audio_text_pair 함수를 실행하시�
 
 processing_utils.ipynb 노트북 내의 make_p_dict 함수를 실행해주세요.
 
-![캡처1](https://user-images.githubusercontent.com/63226383/117935916-31845600-b33f-11eb-91d0-c043c128140a.PNG)
+![1](https://user-images.githubusercontent.com/63226383/117945618-7614ef00-b349-11eb-8e54-8d1a98bc0dab.PNG)
 
 작업이 끝나면 위와 같은 형태를 띄는 p_lexicon.txt 파일이 만들어집니다. 
 
