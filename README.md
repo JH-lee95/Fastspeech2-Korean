@@ -1,3 +1,6 @@
+## 본 Repository는 https://github.com/HGU-DLLAB/Korean-FastSpeech2-Pytorch 를 변형한 것 입니다.
+
+
 # Korean FastSpeech 2 - Pytorch Implementation
 
 ![](./assets/model.png)
@@ -34,8 +37,83 @@ pip install -r requirements.txt
 
 # Preprocessing
 
-**(1) kss dataset download**
-* [Korean-Single-Speech dataset](https://www.kaggle.com/bryanpark/korean-single-speaker-speech-dataset): 12,853개(약 12시간)의 샘플로 구성된 한국어 여성 단일화자 발화 dataset입니다.
+**(1) 데이터셋 구조 확인**
+* 해당 프로젝트는 KSS 데이터셋을 기반으로 작성되었습니다. ([Korean-Single-Speech dataset](https://www.kaggle.com/bryanpark/korean-single-speaker-speech-dataset)) 따라서 KSS 데이터셋과 똑같은 데이터 구조를 맞추어 주는 것이, 진행하기에 편리합니다.
+
+![캡처](https://user-images.githubusercontent.com/63226383/117932810-cbe29a80-b33b-11eb-9093-4814f3449262.PNG)
+
+데이터셋은 위와 같은 구조를 이루어야 합니다. 데이터셋안에 1,2,3,4 라는 sub_directory와 폴더 내의 각 wav파일과 그에 대한 transcript을 기록한 Metadata(transcript.v.1.4.txt)가 있어야 합니다.
+
+**(2) MFA Train**
+
+* MFA(Montreal Forced Aligner)는 Fastspeech2 학습에 반드시 필요한, Duration을 추출하기 위해 사용됩니다. MFA는 발화(음성 파일)와 Phoneme sequence간의 alignment를 실행하고 이를 TextGrid라는 파일로 저장합니다. 
+
+MFA 실행에 앞서 다음과 같은 과정이 필요합니다. 
+
+1. wav-lab pair 생성
+
+wav파일과 그 wav파일의 발화를 transcript한 lab파일이 필요합니다.
+
+utils.ipynb 노트북 내의 audio_text_pair 함수를 실행하시면 됩니다.
+
+해당 함수는 metadata로 부터 wav파일과 text를 인식하여, wav파일과 확장자만 다른 transcript파일(.lab) 을 생성합니다. 
+
+
+![캡처1](https://user-images.githubusercontent.com/63226383/117935760-0568d500-b33f-11eb-857e-6024ed7a5421.PNG)
+
+작업이 끝나면 위의 형태와 같이 wav-lab pair가 만들어져야 합니다.
+
+
+2. lexicon 파일 생성 
+ 
+가지고 있는 데이터셋 내의 모든 발화에 대한, phoneme을 기록한 lexicon 파일을 생성합니다.
+
+utils.ipynb 노트북 내의 make_p_dict 함수를 실행해주세요.
+
+![캡처1](https://user-images.githubusercontent.com/63226383/117935916-31845600-b33f-11eb-91d0-c043c128140a.PNG)
+
+작업이 끝나면 위와 같은 형태를 띄는 p_lexicon.txt 파일이 만들어집니다. 
+
+
+3. MFA 설치 
+
+* MFA에 대한 자세한 설치 방법은 https://montreal-forced-aligner.readthedocs.io/en/latest/installation.html 이곳은 확인해주세요.
+
+
+4. MFA 실행
+
+MFA의 경우 pre-trained된 한국어 acoustic model과 g2p 모델을 제공하고 있습니다. 하지만 해당 모델은 english phoneme을 생성하기 때문에 한국어 phoneme을 생성하기 위해서는 직접 train을 시켜주어야 합니다.
+
+MFA 설치가 완료되었다면 아래와 같은 커멘드를 실행해주세요.
+
+mfa train <데이터셋 위치> <p_lexicon의 위치> <out directory>
+
+MFA가 정상적으로 실행되었을 경우 다음과 같은 형태의 TextGrid 파일이 만들어집니다.
+![캡처](https://user-images.githubusercontent.com/63226383/117936797-3d244c80-b340-11eb-89d0-699f3499e8e8.PNG)
+
+
+
+**(3) 데이터전처리**
+
+1.hparms.py
+
+- dataset : 데이터셋 폴더명
+- data_path : dataset의 상위 폴더
+- meta_name : metadata의 파일명 ex)transcript.v.1.4.txt
+- textgrid_path : textgrid 압축 파일의 위치 (textgrid 파일들을 미리 압축해주세요)
+- tetxgrid_name : textgird 압푹 파일의 파일명
+
+2. preprocess.py
+
+![캡처](https://user-images.githubusercontent.com/63226383/117941734-58458b00-b345-11eb-9fa8-47fc74c7a844.PNG)
+
+해당 부분을 본인의 데이터셋 이름에 맞게 변경해주세요
+
+
+
+
+
+
 
 dataset을 다운로드 하신 후, 압축을 해제하시고 ``hparams.py``에 있는 ``data_path``에 다운받은 kss dataset의 경로를 기록해주세요.
 
@@ -111,3 +189,5 @@ We specially thank to ming024 for providing FastSpeech2 pytorch-implentation. Th
 - [FastSpeech: Fast, Robust and Controllable Text to Speech](https://arxiv.org/abs/1905.09263), Y. Ren, *et al*.
 - [ming024's FastSpeech2 impelmentation](https://github.com/ming024/FastSpeech2)
 - [rishikksh20's VocGAN implementation](https://github.com/rishikksh20/VocGAN)
+![캡처](https://user-images.githubusercontent.com/63226383/117941701-52e84080-b345-11eb-947f-9a8fb67e9952.PNG)
+![캡처](https://user-images.githubusercontent.com/63226383/117941708-54196d80-b345-11eb-85ec-75cd96550e60.PNG)
