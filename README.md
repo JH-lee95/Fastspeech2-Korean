@@ -151,6 +151,18 @@ python synthesis.py --step 500000
 pretrained model(checkpoint)을 [다운로드](https://drive.google.com/file/d/1qkFuNLqPIm-A5mZZDPGK1mnp0_Lh00PN/view?usp=sharing)해 주세요.
 그 후,  ```hparams.py```에 있는 ```checkpoint_path``` 변수에 기록된 경로에 위치시켜주시면 사전학습된 모델을 사용 가능합니다.
 
+
+# Fine-Tuning
+Pretrained model을 활용하여 Fine-tuning을 할 경우, 최소 30분 이상의 데이터가 권장됩니다. 10분 정도 분량의 데이터로 실험시 목소리와 발음은 대체적으로 비슷하게 따라하나 노이즈가 심했습니다.
+
+Fine-tuning 시, Learning Rate의 조정이 필요합니다. Learning Rate는 적당히 낮은 값이 필요하며, 이는 경험적으로 알아내셔야 합니다. (저는 최종 step에서의 Learning Rate를 사용했습니다.)
+
+```
+python train.py --restore_step 350000 
+```
+
+
+
 # Tensorboard
 ```
 tensorboard --logdir log/hp.dataset/
