@@ -1,4 +1,4 @@
-## 본 Repository는 https://github.com/HGU-DLLAB/Korean-FastSpeech2-Pytorch 를 변형한 것 입니다.
+#### 본 Repository는 https://github.com/HGU-DLLAB/Korean-FastSpeech2-Pytorch 를 변형 및 수정한 것입니다.
 
 # 변경 사항
 
@@ -13,15 +13,9 @@
 ![](./assets/model.png)
 # Introduction
 
-최근 딥러닝 기반 음성합성 기술이 발전하며, 자기회귀적 모델의 느린 음성 합성 속도를 개선하기 위해 비자기회귀적 음성합성 모델이 제안되었습니다. FastSpeech2는 비자기회귀적 음성합성 모델들 중 하나로, Montreal Forced Aligner(M. McAuliffe et.al., 2017)에서 phoneme(text)-utterance alignment를 추출한 duration 정보를 학습하고, 이를 바탕으로 phoneme별 duration을 예측합니다. 예측된 duration을 바탕으로 phoneme-utterance alignment가 결정되고 이를 바탕으로 phoneme에 대응되는 음성이 생성됩니다. 그러므로, FastSpeech2를 학습시키기 위해서는 MFA에서 학습된 phoneme-utterance alignment 정보가 필요합니다.
-
-이 프로젝트는 Microsoft의 [**FastSpeech 2(Y. Ren et. al., 2020)**](https://arxiv.org/abs/2006.04558)를 [**Korean Single Speech dataset (이하 KSS dataset)**](https://www.kaggle.com/bryanpark/korean-single-speaker-speech-dataset)에서 동작하도록 구현한 것입니다. 본 소스코드는 ming024님의 [FastSpeech2](https://github.com/ming024/FastSpeech2) 코드를 기반으로 하였고, [Montreal Forced Aligner](https://github.com/MontrealCorpusTools/Montreal-Forced-Aligner)를 이용하여 duration 을 추출해 구현되었습니다.
-
-본 프로젝트에서는 아래와 같은 contribution을 제공합니다.
-* kss dataset에 대해 동작하게 만든 소스코드
-* Montreal Forced Aligner로부터 추출한 kss dataset의 text-utterance duration 정보 (TextGrid)
-* kss dataset에 대해 학습한 FastSpeech2(Text-to-melspectrogram network) pretrained model
-* kss dataset에 대해 학습한 [VocGAN](https://arxiv.org/pdf/2007.15256.pdf)(Neural vocoder)의 pretrained model
+Fastspeech2는 기존의 자기회귀(Autoregressive) 기반의 느린 학습 및 합성 속도를 개선한 모델입니다. 비자기회귀(Non Autoregressive) 기반의 모델로, Variance Adaptor에서 분산 데이터들을 통해, speech 예측의 정확도를 높일 수 있습니다.
+즉 기존의 audio-text만으로 예측을 하는 모델에서, pitch,energy,duration을 추가한 모델입니다. 
+Fastspeech2에서 duration은 MFA(Montreal Forced Aligner)를 통해 추출합니다. 이렇게 추출한 duration을 바탕으로 phoneme(음소)와 음성간의 alignment가 만들어집니다.  
 
 # Install Dependencies
 
@@ -38,9 +32,6 @@ pip install g2pk
 ```
 pip install -r requirements.txt
 ```
-
-**[WARNING] anaconda 가상환경을 사용하시는 것을 권장드립니다.**
-
 
 # Preprocessing
 
