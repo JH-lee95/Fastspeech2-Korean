@@ -71,7 +71,7 @@ wav파일과 그 wav파일의 발화를 transcript한 lab파일이 필요합니�
  
 가지고 있는 데이터셋 내의 모든 발화에 대한, phoneme을 기록한 lexicon 파일을 생성합니다.
 
-[processing_utils.ipynb](https://github.com/JH-lee95/Fastspeech2-Korean/blob/master/processing_utils.ipynb) 노트북 내의 make_p_dict 함수를 실행해주세요.
+[processing_utils.ipynb](https://github.com/JH-lee95/Fastspeech2-Korean/blob/master/processing_utils.ipynb) 노트북 내의 make_p_dict 와 make_lexicon 함수를 차례대로 실행해주세요.
 
 ![1](https://user-images.githubusercontent.com/63226383/117945618-7614ef00-b349-11eb-8e54-8d1a98bc0dab.PNG)
 
