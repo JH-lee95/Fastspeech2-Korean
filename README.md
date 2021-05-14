@@ -86,7 +86,7 @@ processing_utils.ipynb 노트북 내의 make_p_dict 함수를 실행해주세요
 
 3. MFA 설치 
 
-* MFA에 대한 자세한 설치 방법은 https://montreal-forced-aligner.readthedocs.io/en/latest/installation.html 이곳은 확인해주세요.
+* MFA에 대한 자세한 설치 방법은 https://montreal-forced-aligner.readthedocs.io/en/latest/installation.html 이곳을 확인해주세요.
 
 
 4. MFA 실행
