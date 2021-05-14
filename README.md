@@ -54,7 +54,7 @@ MFA 실행에 앞서 다음과 같은 과정이 필요합니다.
 
 wav파일과 그 wav파일의 발화를 transcript한 lab파일이 필요합니다.
 
-processing_utils.ipynb 노트북 내의 audio_text_pair 함수를 실행하시면 됩니다.
+[processing_utils.ipynb](https://github.com/JH-lee95/Fastspeech2-Korean/blob/master/processing_utils.ipynb) 노트북 내의 audio_text_pair 함수를 실행하시면 됩니다.
 
 해당 함수는 metadata로 부터 wav파일과 text를 인식하여, wav파일과 확장자만 다른 transcript파일(.lab) 을 생성합니다. 
 
@@ -68,7 +68,7 @@ processing_utils.ipynb 노트북 내의 audio_text_pair 함수를 실행하시�
  
 가지고 있는 데이터셋 내의 모든 발화에 대한, phoneme을 기록한 lexicon 파일을 생성합니다.
 
-processing_utils.ipynb 노트북 내의 make_p_dict 함수를 실행해주세요.
+[processing_utils.ipynb](https://github.com/JH-lee95/Fastspeech2-Korean/blob/master/processing_utils.ipynb) 노트북 내의 make_p_dict 함수를 실행해주세요.
 
 ![1](https://user-images.githubusercontent.com/63226383/117945618-7614ef00-b349-11eb-8e54-8d1a98bc0dab.PNG)
 
