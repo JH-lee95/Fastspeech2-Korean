@@ -1,4 +1,3 @@
-#### 본 Repository는 https://github.com/HGU-DLLAB/Korean-FastSpeech2-Pytorch 를 변형 및 수정한 것입니다.
 
 # 변경 사항
 
@@ -16,6 +15,10 @@
 Fastspeech2는 기존의 자기회귀(Autoregressive) 기반의 느린 학습 및 합성 속도를 개선한 모델입니다. 비자기회귀(Non Autoregressive) 기반의 모델로, Variance Adaptor에서 분산 데이터들을 통해, speech 예측의 정확도를 높일 수 있습니다.
 즉 기존의 audio-text만으로 예측을 하는 모델에서, pitch,energy,duration을 추가한 모델입니다. 
 Fastspeech2에서 duration은 MFA(Montreal Forced Aligner)를 통해 추출합니다. 이렇게 추출한 duration을 바탕으로 phoneme(음소)와 음성간의 alignment가 만들어집니다.  
+
+
+* 본 Repository는 https://github.com/HGU-DLLAB/Korean-FastSpeech2-Pytorch 를 변형 및 수정한 것입니다.
+
 
 # Install Dependencies
 
