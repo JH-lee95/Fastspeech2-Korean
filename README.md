@@ -49,9 +49,9 @@ pip install -r requirements.txt
 
 ![캡처](https://user-images.githubusercontent.com/63226383/117932810-cbe29a80-b33b-11eb-9093-4814f3449262.PNG)
 
-이 중 1번 폴더는 valid set으로 사용되고, 나머지마 폴더가 train set으로 사용됩니다. (향후 train-test split을 이용해 변경예정)
-
 데이터셋은 위와 같은 구조를 이루어야 합니다. 데이터셋안에 1,2,3,4 라는 sub_directory와 폴더 내의 각 wav파일과 그에 대한 transcript을 기록한 Metadata(transcript.v.1.4.txt)가 있어야 합니다.
+
+이 중 1번 폴더는 valid set으로 사용되고, 나머지 폴더 train set으로 사용됩니다. (향후 train-test split을 이용해 변경예정)
 
 **(2) MFA Train**
 
